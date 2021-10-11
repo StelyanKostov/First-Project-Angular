@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Akronim&display=swap');
+.div-element {
+    text-align: center;
+    font-family: 'Akronim', cursive;
+    font-size: xx-large;
+    color: whitesmoke;
+}
+
+.div-bg {
+    background: url("https://www.fashiongonerogue.com/wp-content/uploads/2015/07/Body-by-Victoria-2015-Campaign-Photos01.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 1900px;
+    height: 500px;
+    border-radius: 10px;
+}

@@ -1,0 +1,19 @@
+img{
+  
+    width:19%;
+   height:550px;
+   object-fit:cover;
+   object-position:50% 50%;
+}
+button{
+    background:#007ACC;
+    border: 0;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+button:hover{
+    background:black;
+}

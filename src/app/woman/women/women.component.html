@@ -1,0 +1,13 @@
+<nav>
+    <button (click)="showImgVictoriaJ()">Victoria justice</button>
+    <button (click)="showImgNinaDobrev()">Nina Dobrev</button>
+    <button (click)="showImgKendallJ()">KendallJ</button>
+    <button (click)="showImgEmily()">Emily Ratajkowski</button>
+
+    <button (click)="showAllImg()">All images</button>
+
+
+</nav>
+<div>
+    <img *ngFor="let img of data" src="{{img}}" alt="">
+</div>

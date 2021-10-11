@@ -1,0 +1,6 @@
+<!-- <input type="text" #input>
+<button (click)="startSearch(input.value)">Search</button> -->
+<!-- <div *ngIf="isStartSearch"> -->
+    <input type="text" (keyup)="inputKeyup($event)" placeholder="Name of Star">
+    <img *ngFor="let img of data" src="{{img}}" alt="">
+<!-- </div> -->

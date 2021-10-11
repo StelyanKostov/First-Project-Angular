@@ -1,0 +1,33 @@
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+li {
+    display: inline;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    font-family: 'Anton', sans-serif;
+}
+
+a:hover {
+    color: yellow;
+}
+
+nav {
+    background: url("https://image.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette_1258-48251.jpg");
+    background-position: bottom;
+    border-radius: 5px;
+    width: 99;
+    padding: 15px;
+    margin-bottom: 5px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}

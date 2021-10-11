@@ -1,0 +1,7 @@
+<div class="div-box" *ngFor="let top of dataimg">
+    <span class="span-position">Position: {{top.position}}</span>
+    <a [routerLink]="['/search', top.name]">
+        <span class="span-name">{{top.name}}</span>
+    </a>
+    <img src="{{top.pathToImg}}" alt="">
+</div>
