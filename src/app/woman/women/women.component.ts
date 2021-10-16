@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WomenService } from '../women.service';
 import { BrowserModule, Title } from '@angular/platform-browser';
+import { FirebaseService, IStars } from 'src/app/firebase.service';
 
 @Component({
   selector: 'app-women',
@@ -8,45 +9,52 @@ import { BrowserModule, Title } from '@angular/platform-browser';
   styleUrls: ['./women.component.css']
 })
 export class WomenComponent implements OnInit {
-  data:string[]
+  data: any[] = [];
   isVictoriaJ = false;
-  isKendallJ =false;
+  isKendallJ = false;
   isNinaDobrev = false;
-  constructor(public womenService:WomenService,
-    public titleService:Title) { 
-      titleService.setTitle("Women")
-    }
+  constructor(
+    public womenService: WomenService,
+    public titleService: Title,
+    private db: FirebaseService
+  ) {
+    titleService.setTitle("Women")
+  }
 
- 
+
   ngOnInit(): void {
   }
 
-  showImgVictoriaJ(){
-    this.data = this.womenService.getImagesViectoriaJ()
-    
-  }
-  showImgNinaDobrev(){
-    this.data = this.womenService.getImagesNinaDobrev()
+  showImgVictoriaJ() {
+
+    this.data = this.db.getStarsName('Victoria Justice');
 
   }
-  showImgKendallJ(){
-    
-    this.data = this.womenService.getImagesKendallJ()
-   
-    
-  }
-  showImgEmily(){
-    this.data = this.womenService.getImagesEmily();
-  }
-  showAllImg(){
+  showImgNinaDobrev() {
 
+    this.data = this.db.getStarsName('Nina Dobrev')
+
+  }
+  showImgKendallJ() {
+  
+    this.data = this.db.getStarsName('Kendall Jenner')
+  }
+  showLeidyAImg() {
+
+    this.data = this.db.getStarsName('Leidy Amelia')
+  }
+  showImgEmily() {
+
+    this.data = this.db.getStarsName('Emily Ratajkowski')
+
+  }
+  showAllImg() {
+
+    // this.db.getStarsAll().then(x=> x.forEach(x=> this.data.push(x.path)))
 
     this.data = null;
     this.data = this.womenService.getAllImg()
   }
-  showLeidyAImg(){
 
-    this.data = this.womenService.getImagesLeidy();
-  }
- 
+
 }

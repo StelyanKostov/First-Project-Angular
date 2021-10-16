@@ -2,60 +2,7 @@ import { retryWhen } from "rxjs/operators";
 
 export class WomenService {
 
-  dataLeidyAmelia:string[]=[
-    "../assets/leidy amelia/leidy ameliajfif.jfif",
-  ];
-
-  dataViectoriaJ:string[] =[
-    "https://c8.alamy.com/comp/PPH0NT/new-york-ny-usa-sept-25-2018-victoria-justice-attends-strong-by-zumba-to-celebrate-the-high-intensity-workoutss-2-year-anniversary-alamy-live-news-sppider-PPH0NT.jpg",
-    "https://celebmagazine.com/wp-content/uploads/2020/12/victoria-justice-new-song-treat-myself.jpg",
-    "https://www.xtrafondos.com/wallpapers/vertical/victoria-justice-para-fabletics-5102.jpg",
-    "https://thumbs.dreamstime.com/z/victoria-justice-los-angeles-ca-june-victoria-justice-mtv-movie-awards-universal-studios-hollywood-picture-paul-smith-176094990.jpg",
-    "https://celebmafia.com/wp-content/uploads/2016/10/victoria-justice-arriving-at-the-harry-show-in-new-york-city-10-18-2016-10.jpg",
-    "https://i.pinimg.com/originals/da/07/40/da07406b424c49ce1d3b3f38303aabaf.jpg",
-    "http://i.imgur.com/SPVyg.jpg",
-    "https://c8.alamy.com/comp/DB2RGF/victoria-justice-nickelodeons-2011-kids-choice-awards-held-at-uscs-DB2RGF.jpg",
-    "https://www.stylevore.com/wp-content/uploads/2020/03/31ff46fcb7fccc39655fc1be95980ee1.jpg",
-    "https://i.pinimg.com/originals/a8/04/44/a804442bd910bdecde0b2fefdd8c1407.jpg",
-    "https://i.pinimg.com/originals/93/8a/95/938a953f922c3220d4e245bd2d7cb86f.jpg",
-    "https://i.pinimg.com/originals/84/ef/0f/84ef0fed13245fa6ed0e2aca0d59eb8f.jpg",
-    "https://i.pinimg.com/736x/fa/34/a8/fa34a8bb2c4c1a0fd8110141823d9fb9.jpg",
-    "https://nudbay.com/wp-content/uploads/2021/02/Victoria-Justice-nude.jpg",
-    "https://www2.pictures.stylebistro.com/fp/Victoria+Justice+Smiles+While+Out+NYC+hN03UUQf3cBl.jpg"
-  
-  
-  ];
-  dataNinaDobrev:string[] =[
-    "https://i.pinimg.com/originals/30/30/2d/30302d55ca86374edddd92b35bd818e8.jpg",
-    "http://i.imgur.com/A47x1rT.jpg",
-    "http://strangeworlds.at.ua/kartinki2/MileySirus/nina-dobrev-upskirt-1.jpg",
-    "http://i.imgur.com/EaOp9EV.jpg",
-    "https://media1.popsugar-assets.com/files/thumbor/SSBiLZlcruqTSaYFI2eiyr-Xa-s/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2011/07/28/2/192/1922398/49184aee517bd503_dobrev5x571211/i/Nina-Dobrev-Playing-Soccer-Puma-Project-Pink-Pictures.jpg",
-    "https://i.pinimg.com/originals/09/77/82/097782a0105fda0af5a351c9bb128faf.jpg",
-    "https://www.beautyriot.com/assets/uploads/gallery/nina-dobrev/beauty-riot-nina-dobrev_01.jpg",
-    "../../assets/img/nina-dobrev-hot-feet - Copy.jpg",
-    "https://c.tenor.com/LcxPvrbn-f4AAAAC/nina-dobrev.gif",
-    "https://c.tenor.com/8j_wvsxIRxsAAAAd/nina-dobrev-hair-orgasm.gif"
-    
-
-  ];
-  dataKendallJ:string[] =[
-    "https://i.pinimg.com/originals/a6/11/97/a61197ab29048659224444f258d1b541.jpg",
-    "https://media1.popsugar-assets.com/files/thumbor/11Tqxpc3XPhbKJEWmbGp_VP1g_o/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2019/10/15/905/n/1922398/b69523d4d818454d_GettyImages-1132036684/i/Sexy-Kendall-Jenner-Pictures.jpg",
-    "https://i.redd.it/vp71omqnwtc61.jpg",
-    "https://www.lifeandstylemag.com/wp-content/uploads/2021/01/149501899_2859461864292522_8802385104382528986_n.jpg?fit=1080%2C1349",
-    "https://i.pinimg.com/564x/2a/3c/86/2a3c86d125eb48278df966b4792062e6.jpg",
-    "https://pbs.twimg.com/media/Drnc0_XXcAAKFv3.jpg",
-    "https://ae01.alicdn.com/kf/HTB1ungyOVXXXXcnXpXXq6xXFXXXt/2017-Summer-Kendall-Jenner-Sexy-Backless-Bodysuit-Sleeveless-Bodycon-Slim-One-Piece-Jumpsuit-Rompers-Women-Casual.jpg_Q90.jpg_.webp",
-    "https://smartcdn.prod.postmedia.digital/torontosun/wp-content/uploads/2019/04/kendall-jenner-gettyimages-1059529174.jpg?quality=100&strip=all",
-    "https://wallsdesk.com/wp-content/uploads/2016/08/Kendall-Jenner-Sexy-images.jpg",
-    "https://cellularnews.com/wp-content/uploads/2020/06/03-kendall-jenner-under-the-covers-325x485.jpg",
-    "https://lh3.googleusercontent.com/proxy/T94NMvUTG5Mi6MotPjmjrH1iuGoNi4ilCjAr82tahZfgwHRcqlDdWtzIFim3Z0t7i_nKVAgMhCdLGaXjOAH1Cifb3aDViGrjJvj1aZklyPUMucKvFOf8yisJIwxzM7dUEmBIgU0qnt8",
-    "https://i.pinimg.com/736x/88/19/69/881969707851cc30b9f1527a413d5333.jpg",
-    "https://www.fotorgia.com/wp-content/uploads/2020/10/kendall-jenner-naked.jpg",
-    "https://78.media.tumblr.com/7ef053702da6fb79ab863f464654050b/tumblr_inline_pewm7kkb2G1twrksx_540.jpg",
-    "https://thumbs.gfycat.com/PoliticalMediumBufflehead-size_restricted.gif"
-  ];
+ 
   dataOther:string[] =[
     "https://celeb.nude.com/wp-content/uploads/2021/06/1623515342_Gizele-Oliveira-Topless-5-Photos.jpg",
     "https://i.pinimg.com/originals/5c/76/77/5c7677c324903a86a3abeacefa9cd54a.jpg",
@@ -300,52 +247,19 @@ export class WomenService {
   ];
   
     constructor() { }
-  
-  
-    getImagesViectoriaJ(){
-      return this.dataViectoriaJ;
-    }
-    getImagesNinaDobrev(){
-      return this.dataNinaDobrev;
-    }
-    getImagesKendallJ(){
-      return this.dataKendallJ;
-    }
+
     getImagesEmily(){
       return this.dataOther.filter(x=> x.toLowerCase().includes('emily'))
     }
-    getImagesLeidy(){
-
-     if (this.dataLeidyAmelia.length === 1) {
-       
-      for (let index = 1; index < 62; index++) {
-       
-        this.dataLeidyAmelia[index] = `../assets/leidy amelia/leidy amelia${index}.jpg`; 
-      }
-      
-
-      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy ameliapng.png");
-      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy ameliapng1.png");
-      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy amelia.gif");
-      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy amelia1.gif");
-     }
-
-      
-
-
-
-      console.log(this.dataLeidyAmelia)
-      return  this.dataLeidyAmelia;
-    }
+   
 
     getAllImgWithString(str:string){
-      this.getImagesLeidy();
-      var data = this.dataViectoriaJ.concat(this.dataKendallJ  , this.dataLeidyAmelia ,this.dataNinaDobrev, this.dataOther).filter(x=> x.toUpperCase().includes(str.toUpperCase()));
+      var data = this.dataOther.filter(x=> x.toUpperCase().includes(str.toUpperCase()));
       return data;
     }
     getAllImg(){
-      this.getImagesLeidy();
-      var data = this.dataViectoriaJ.concat(this.dataNinaDobrev,  this.dataKendallJ,  this.dataLeidyAmelia,this.dataOther);
+    
+      var data = this.dataOther;
       return data;
     }
 }
