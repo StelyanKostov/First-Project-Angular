@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WomenService } from '../woman/women.service';
 import {tap, switchMap, map} from 'rxjs/operators'
+import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,7 +17,8 @@ export class SearchBarComponent implements OnInit {
   inputValue;
   constructor(private womenService:WomenService,
     private route:ActivatedRoute,
-    private r :Router
+    private r :Router,
+    private fireBaseService:FirebaseService
     ) { 
      
      
@@ -34,7 +36,8 @@ export class SearchBarComponent implements OnInit {
       window.scroll(0,0);
       this.data = null
       const name = this.route.snapshot.params.name;
-      this.data =  this.womenService.getAllImgWithString(name);
+      // this.data =  this.womenService.getAllImgWithString(name);
+      this.data = this.fireBaseService.getStarsName(name);
 
         console.log(name)
       // window.scroll(0,0);
@@ -53,7 +56,9 @@ export class SearchBarComponent implements OnInit {
 
   startSearch(value:string){
 
-   this.data  = this.womenService.getAllImgWithString(value);
+  //  this.data  = this.womenService.getAllImgWithString(value);
+   this.data = this.fireBaseService.getStarsName(value);
+   console.log(this.data)
    this.isStartSearch = !this.isStartSearch;
   }
 

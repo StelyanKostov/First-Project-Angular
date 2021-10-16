@@ -248,10 +248,7 @@ export class WomenService {
   
     constructor() { }
 
-    getImagesEmily(){
-      return this.dataOther.filter(x=> x.toLowerCase().includes('emily'))
-    }
-   
+    
 
     getAllImgWithString(str:string){
       var data = this.dataOther.filter(x=> x.toUpperCase().includes(str.toUpperCase()));

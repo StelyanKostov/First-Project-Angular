@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -9,15 +10,17 @@ import { NgForm } from '@angular/forms';
 export class SuggestionsComponent implements OnInit {
 
   img:string;
-  constructor() { }
+  constructor(private fireBaseService:FirebaseService) { }
 
   ngOnInit(): void {
   }
 
   suggestionHandler(form:NgForm){
 
-    this.img =form.value.link
-    console.log(form.value.link)
+    let imgName = form.value.name;
+    let imgLink =form.value.link;
+    this.fireBaseService.addStars(imgName , [imgLink])
+    console.log(imgName  +" " +imgLink)
   }
   shoImg(event:KeyboardEvent){
 

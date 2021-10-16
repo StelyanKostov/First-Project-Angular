@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs,addDoc } from 'firebase/firestore/lite';
-import { environment } from '../environments/environment'
-import { WomenService } from './woman/women.service';
+import { environment } from '../../environments/environment'
+import { WomenService } from '.././woman/women.service';
 
 
 
@@ -46,11 +46,11 @@ export class FirebaseService {
     }
     
   }
-  async getDataStarsFromDbByName(strName:string) {
+  private async getDataStarsFromDbByName(strName:string) {
     
     const starsCol = collection(this.db, 'stars');
     const starsSnapshot = await getDocs(starsCol);
-    const starsList = starsSnapshot.docs.map(doc => doc.data()).filter(x=> (x as IStars).name === strName);
+    const starsList = starsSnapshot.docs.map(doc => doc.data()).filter(x=> (x as IStars).name.toLowerCase().includes(strName.toLowerCase()));
     return starsList;
 
   }
@@ -62,7 +62,14 @@ export class FirebaseService {
     return this.dataFromDb;
   }
 
-  async getDataStarsFromDbAll() {
+  getStartsAll(){
+
+    this.dataFromDb = [];
+    this.getDataStarsFromDbAll().then(x=> x.forEach(x=> this.dataFromDb.push(x.path)));
+    return this.dataFromDb;
+  }
+
+  private async getDataStarsFromDbAll() {
     
     const starsCol = collection(this.db, 'stars');
     const starsSnapshot = await getDocs(starsCol);

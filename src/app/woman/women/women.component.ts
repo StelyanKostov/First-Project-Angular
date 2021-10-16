@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WomenService } from '../women.service';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { FirebaseService, IStars } from 'src/app/firebase.service';
+import { FirebaseService, IStars } from '../../shared/firebase.service'
 
 @Component({
   selector: 'app-women',

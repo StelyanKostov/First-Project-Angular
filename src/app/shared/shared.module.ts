@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnlargeImgDirective } from './enlarge-img.directive';
+import { FirebaseService } from './firebase.service';
 
 
 
 @NgModule({
   declarations: [
-    EnlargeImgDirective
+    EnlargeImgDirective,
+    
+  ],
+  providers:[
+    FirebaseService
   ],
   imports: [
     CommonModule
   ],
   exports:[
-    EnlargeImgDirective
+    EnlargeImgDirective,
   ]
 })
 export class SharedModule { }

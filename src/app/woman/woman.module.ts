@@ -6,7 +6,6 @@ import { WomanRoutingModule } from './woman-routing.module';
 import { WomenService } from './women.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
-import { FirebaseService } from '../firebase.service';
 
 
 
@@ -24,8 +23,7 @@ import { FirebaseService } from '../firebase.service';
   ],
   providers:[
     WomenService,
-    TopWomanComponent,
-    FirebaseService
+    
   ]
 })
 export class WomanModule { }
