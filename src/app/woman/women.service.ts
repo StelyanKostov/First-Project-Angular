@@ -2,6 +2,10 @@ import { retryWhen } from "rxjs/operators";
 
 export class WomenService {
 
+  dataLeidyAmelia:string[]=[
+    "../assets/leidy amelia/leidy ameliajfif.jfif",
+  ];
+
   dataViectoriaJ:string[] =[
     "https://c8.alamy.com/comp/PPH0NT/new-york-ny-usa-sept-25-2018-victoria-justice-attends-strong-by-zumba-to-celebrate-the-high-intensity-workoutss-2-year-anniversary-alamy-live-news-sppider-PPH0NT.jpg",
     "https://celebmagazine.com/wp-content/uploads/2020/12/victoria-justice-new-song-treat-myself.jpg",
@@ -252,18 +256,46 @@ export class WomenService {
     "../assets/emily/Emily Ratajkowski35.jpg",
     "../assets/emily/Emily Ratajkowski36.jpg",
     "../assets/emily/Emily Ratajkowski37.jpg",
-  
+    "https://media1.popsugar-assets.com/files/thumbor/MMPE81rKsRRLNUyL72q5HeS_wig/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/11/20/655/n/1922564/c95a411043586791_GettyImages-876613206_master/i/Jasmine-Tookes.jpg",
+    "https://fappeningbook.com/photos/j/a/jasmine-tookes/1000/232.jpg",
+    "https://fapreon.com/content/j/a/jasmine-tookes/e510f/0015.jpg",
+    "https://static-ca-cdn.eporner.com/gallery/hu/6Y/NifnI3R6Yhu/411382-jasmine-tookes-nude.jpg",
+    "http://thefappeningnew.com/wp-content/uploads/2017/05/Jasmine-Tookes_thefappeningnew_com-69.jpg",
+    "../assets/emily/Emily Ratajkowski38.jpg",
+    "../assets/emily/Emily Ratajkowski39.jpg",
+    "../assets/emily/Emily Ratajkowski40.gif",
+    "../assets/emily/Emily Ratajkowski42.gif",
+    "../assets/emily/Emily Ratajkowski43.gif",
+    "../assets/emily/Emily Ratajkowski44.gif",
+    "../assets/emily/Emily Ratajkowski45.gif",
+    "../assets/emily/Emily Ratajkowski46.gif",
+    "../assets/emily/Emily Ratajkowski47.gif",
+    "../assets/emily/Emily Ratajkowski48.gif",
+    "../assets/emily/Emily Ratajkowski49.webp",
+    "../assets/emily/Emily Ratajkowski51.gif",
+    "../assets/emily/Emily Ratajkowski52.gif",
+    "../assets/emily/Emily Ratajkowski53.gif",
+    "../assets/emily/Emily Ratajkowski54.gif",
+    "../assets/emily/Emily Ratajkowski55.gif",
+    "../assets/emily/Emily Ratajkowski56.jpg",
+    "../assets/emily/Emily Ratajkowski57.jpg",
+    "../assets/emily/Emily Ratajkowski58.jpg",
+    "../assets/emily/Emily Ratajkowski59.jpg",
 
 
-
-
-
-
-
-
-
-
-
+    "https://saucemonsters.com/wp-content/uploads/2017/06/Cara-Delevingne-03.jpg",
+    "https://i2.wp.com/bestofcomicbooks.com/wp-content/uploads/2018/06/cara-delevingne-cleavage.jpg",
+    "https://saucemonsters.com/wp-content/uploads/2017/06/Cara-Delevingne-02.jpg",
+    "https://www3.pictures.stylebistro.com/gi/Cara+Delevingne+Dresses+Skirts+Mini+Dress+nUNzPezWZBtl.jpg",
+    "https://akns-images.eonline.com/eol_images/Entire_Site/201507/rs_634x862-150107102042-634-dkny-cara-delevingne.ls.1715.jpg",
+    "https://media1.popsugar-assets.com/files/thumbor/23CtyliMFoG3amUhXuIPDkeXVHw/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/09/04/786/n/1922398/ce4ffe65cf8f0e0b_GettyImages-1165912586/i/Sexy-Cara-Delevingne-Pictures.jpg",
+    "../assets/img/Cara Delevingne.jpg",
+    "../assets/img/Cara Delevingne1.jpg",
+    "../assets/img/Cara Delevingne2.jpg",
+    "../assets/img/Cara Delevingne3.jpg",
+    "../assets/img/Cara Delevingne4.jpg",
+    "../assets/img/Cara Delevingne5.jpg",
+    "../assets/img/Cara delevingne6.jpg",
     
   ];
   
@@ -282,15 +314,38 @@ export class WomenService {
     getImagesEmily(){
       return this.dataOther.filter(x=> x.toLowerCase().includes('emily'))
     }
+    getImagesLeidy(){
+
+     if (this.dataLeidyAmelia.length === 1) {
+       
+      for (let index = 1; index < 62; index++) {
+       
+        this.dataLeidyAmelia[index] = `../assets/leidy amelia/leidy amelia${index}.jpg`; 
+      }
+      
+
+      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy ameliapng.png");
+      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy ameliapng1.png");
+      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy amelia.gif");
+      this.dataLeidyAmelia.push("../assets/leidy amelia/leidy amelia1.gif");
+     }
+
+      
+
+
+
+      console.log(this.dataLeidyAmelia)
+      return  this.dataLeidyAmelia;
+    }
 
     getAllImgWithString(str:string){
-
-      var data = this.dataViectoriaJ.concat(this.dataKendallJ ,this.dataNinaDobrev, this.dataOther ).filter(x=> x.toUpperCase().includes(str.toUpperCase()));
+      this.getImagesLeidy();
+      var data = this.dataViectoriaJ.concat(this.dataKendallJ  , this.dataLeidyAmelia ,this.dataNinaDobrev, this.dataOther).filter(x=> x.toUpperCase().includes(str.toUpperCase()));
       return data;
     }
     getAllImg(){
-
-      var data = this.dataViectoriaJ.concat(this.dataNinaDobrev,  this.dataKendallJ, this.dataOther);
+      this.getImagesLeidy();
+      var data = this.dataViectoriaJ.concat(this.dataNinaDobrev,  this.dataKendallJ,  this.dataLeidyAmelia,this.dataOther);
       return data;
     }
 }

@@ -1,0 +1,23 @@
+<div>
+    <form #f="ngForm" (ngSubmit)="suggestionHandler(f)">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name.." ngModel>
+
+        <label for="link">Link</label>
+        <input (keyup)="shoImg($event)" type="text" id="link" name="link" placeholder="Your link" ngModel>
+
+        <!-- <label for="country">Country</label>
+        <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+      </select> -->
+
+        <button>Send</button>
+    </form>
+
+</div>
+
+<div>
+    <img appEnlargeImg src="{{img}}" alt="">
+</div>

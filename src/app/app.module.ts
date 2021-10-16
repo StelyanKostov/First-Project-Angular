@@ -9,23 +9,39 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { WomanModule } from './woman/woman.module';
 
+import { environment } from "src/environments/environment";
+import { SuggestionsComponent } from './suggestions/suggestions.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchBarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SuggestionsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    WomanModule
+    WomanModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
+  
+ 
+
   ],
   providers: [
     Title,
     
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[
+  ]
 })
 export class AppModule { }

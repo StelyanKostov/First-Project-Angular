@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ITopWaman, TopWomanService } from '../top-woman.service';
-
 @Component({
   selector: 'app-top-woman',
   templateUrl: './top-woman.component.html',
@@ -16,9 +15,13 @@ export class TopWomanComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    
     this.showImg()
   }
+ 
+  
+   
+ 
 
   showImg() {
 

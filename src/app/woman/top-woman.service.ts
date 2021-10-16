@@ -18,15 +18,20 @@ export class TopWomanService {
   constructor() { }
 
   dataTopWoman:ITopWaman[] =[
+    // {
+    //   position: 1,
+    //   name: "Desi",
+    //   pathToImg: "../assets/desi/desi.jpg"
+    // },
     {
       position: 1,
-      name: "Desi",
-      pathToImg: "../assets/desi/desi.jpg"
+      name: "Victoria",
+      pathToImg: "https://celebmagazine.com/wp-content/uploads/2020/12/victoria-justice-new-song-treat-myself.jpg"
     },
     {
       position: 2,
-      name: "Victoria",
-      pathToImg: "https://celebmagazine.com/wp-content/uploads/2020/12/victoria-justice-new-song-treat-myself.jpg"
+      name: "Leidy",
+      pathToImg: "http://localhost:4200/assets/leidy%20amelia/leidy%20amelia16.jpg"
     },
     {
       position: 3,

@@ -5,6 +5,7 @@ import { TopWomanComponent } from './top-woman/top-woman.component';
 import { WomanRoutingModule } from './woman-routing.module';
 import { WomenService } from './women.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,11 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     WomanRoutingModule,
     HttpClientModule,
+    SharedModule
 
   ],
   providers:[
     WomenService,
-    TopWomanComponent
+    TopWomanComponent,
   ]
 })
 export class WomanModule { }

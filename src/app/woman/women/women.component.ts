@@ -22,27 +22,18 @@ export class WomenComponent implements OnInit {
   }
 
   showImgVictoriaJ(){
-    // this.isVictoriaJ = !this.isVictoriaJ;
     this.data = this.womenService.getImagesViectoriaJ()
-    this.hiddenImg(this.isVictoriaJ);
-    // this.isNinaDobrev = false;
-    // this.isKendallJ =false;
+    
   }
   showImgNinaDobrev(){
-    // this.isNinaDobrev = !this.isNinaDobrev;
     this.data = this.womenService.getImagesNinaDobrev()
-    this.hiddenImg(this.isNinaDobrev);
-    // this.isVictoriaJ = false;
-    // this.isKendallJ =false;
+
   }
   showImgKendallJ(){
     
-    // this.isKendallJ = !this.isKendallJ;
     this.data = this.womenService.getImagesKendallJ()
    
-    this.hiddenImg(this.isKendallJ);
-    // this.isVictoriaJ = false;
-    // this.isNinaDobrev = false;
+    
   }
   showImgEmily(){
     this.data = this.womenService.getImagesEmily();
@@ -53,10 +44,9 @@ export class WomenComponent implements OnInit {
     this.data = null;
     this.data = this.womenService.getAllImg()
   }
-  hiddenImg(value:boolean){
+  showLeidyAImg(){
 
-    if (value) {
-      this.data = null;
-    }
+    this.data = this.womenService.getImagesLeidy();
   }
+ 
 }

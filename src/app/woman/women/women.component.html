@@ -3,11 +3,13 @@
     <button (click)="showImgNinaDobrev()">Nina Dobrev</button>
     <button (click)="showImgKendallJ()">KendallJ</button>
     <button (click)="showImgEmily()">Emily Ratajkowski</button>
+    <button (click)="showLeidyAImg()">Leidy Amilia</button>
 
     <button (click)="showAllImg()">All images</button>
 
 
 </nav>
 <div>
-    <img *ngFor="let img of data" src="{{img}}" alt="">
+    <h1 *ngIf="data">Count: {{data?.length}}</h1>
+    <img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">
 </div>
