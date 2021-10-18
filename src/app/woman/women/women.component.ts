@@ -9,7 +9,7 @@ import { FirebaseService, IStars } from '../../shared/firebase.service'
   styleUrls: ['./women.component.css']
 })
 export class WomenComponent implements OnInit {
-  data: any[] = [];
+  data: string[] = [];
   isVictoriaJ = false;
   isKendallJ = false;
   isNinaDobrev = false;
@@ -19,33 +19,34 @@ export class WomenComponent implements OnInit {
     private db: FirebaseService
   ) {
     titleService.setTitle("Women")
+
+    // db.updateStar();
   }
 
 
   ngOnInit(): void {
   }
 
-  showImgVictoriaJ() {
+  async showImgVictoriaJ() {
 
-    this.data = this.db.getStarsName('Victoria Justice');
-
-  }
-  showImgNinaDobrev() {
-
-    this.data = this.db.getStarsName('Nina Dobrev')
+    await this.db.getStarsName('Victoria Justice').then(x => this.data = x);
 
   }
-  showImgKendallJ() {
-  
-    this.data = this.db.getStarsName('Kendall Jenner')
-  }
-  showLeidyAImg() {
+  async showImgNinaDobrev() {
+    await this.db.getStarsName('Nina Dobrev').then(x => this.data = x);
 
-    this.data = this.db.getStarsName('Leidy Amelia')
   }
-  showImgEmily() {
+  async showImgKendallJ() {
+    await this.db.getStarsName('Kendall Jenner').then(x => this.data = x);
 
-    this.data = this.db.getStarsName('Emily Ratajkowski')
+  }
+  async showLeidyAImg() {
+    await this.db.getStarsName('Leidy Amelia').then(x => this.data = x);
+
+  }
+  async showImgEmily() {
+    await this.db.getStarsName('Emily Ratajkowski').then(x => this.data = x);
+
 
   }
   showAllImg() {

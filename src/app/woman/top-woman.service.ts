@@ -25,22 +25,22 @@ export class TopWomanService {
     // },
     {
       position: 1,
-      name: "Victoria",
+      name: "Victoria Justice",
       pathToImg: "https://celebmagazine.com/wp-content/uploads/2020/12/victoria-justice-new-song-treat-myself.jpg"
     },
     {
       position: 2,
-      name: "Leidy",
+      name: "Leidy Amelia",
       pathToImg: "http://localhost:4200/assets/leidy%20amelia/leidy%20amelia16.jpg"
     },
     {
       position: 3,
-      name: "Emily",
+      name: "Emily Ratajkowski",
       pathToImg: "http://localhost:4200/assets/emily/Emily%20Ratajkowski30.jpg"
     },  
     {
       position: 4,
-      name: "Nina",
+      name: "Nina Dobrev",
       pathToImg: "http://i.imgur.com/EaOp9EV.jpg"
     },
     {

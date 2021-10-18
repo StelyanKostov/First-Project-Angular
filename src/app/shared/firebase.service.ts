@@ -1,96 +1,101 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs,addDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, where, query } from 'firebase/firestore/lite';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
 import { WomenService } from '.././woman/women.service';
 
 
 
 export interface IStars {
+  id: string,
   name: string,
   path: string
 }
 
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
 
-// TODO: Replace the following with your app's Firebase project configuration
-
-
-
-
-// Get a list of cities from your database
-
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FirebaseService {
 
   db: any;
-  dataFromDb:string[] =[];
-  constructor(private womanService:WomenService) {
+  constructor(private womanService: WomenService) {
     const app = initializeApp(environment.fireBase);
     this.db = getFirestore(app);
   }
 
 
-  async addStars(name:string , arrayData:any[]){
+  async addStars(name: string, arrayData: any[]) {
 
     const starsCol = collection(this.db, 'stars');
 
     for (let index = 0; index < arrayData.length; index++) {
-      
-    await addDoc(starsCol,{name:name ,path:arrayData[index]})
-      
+
+      await addDoc(starsCol, { name: name, path: arrayData[index] })
+
     }
-    
+
   }
-  private async getDataStarsFromDbByName(strName:string) {
+
+  async updateStar(id: string, newPath: string) {
+
+    const ref = doc(this.db, "stars", id);
+    await updateDoc(ref, {
+      path: newPath
+    });
+
+
+  }
+ 
+  public async getStarsByPathAndName(name: string, path: string): Promise<IStars> {
+
+    let data: IStars;
+
+    const starsCol = query(collection(this.db, 'stars'), where("name", "==", name), where("path", "==", path));
+    const starsSnapshot = await getDocs(starsCol);
+    const starsList = starsSnapshot.docs.map(doc => {
+      data ={ id: doc.id, name: doc.data().name, path: doc.data().path }
+    });
+
+
+    return data;
+
+  }
+  public async getStarsName(name: string):Promise<string[]> {
+    let data: string[] = [];
+
+    const starsCol = query(collection(this.db, 'stars'), where("name", "==", name));
+    const starsSnapshot = await getDocs(starsCol);
+    const starsList = starsSnapshot.docs.map(doc => data.push(doc.data().path))
+    return data;
+
+  }
+
+
+ 
+  public async getStarsForSearch(str: string):Promise<string[]> {
+
+    let data:string[] =[];
+    const starsCol = query(collection(this.db, 'stars'));
+
+    const starsSnapshot = await getDocs(starsCol);
+    const starsList = starsSnapshot.docs.map(doc =>{ 
+      
+      if ((doc.data().name as string).toLowerCase().includes(str.toLowerCase())) {
+        data.push(doc.data().path)
+      }
     
+    })
+ 
+    return data
+  }
+
+  public async getDataStarsFromDbAll():Promise<string[]> {
+    let data: string[] = [];
     const starsCol = collection(this.db, 'stars');
     const starsSnapshot = await getDocs(starsCol);
-    const starsList = starsSnapshot.docs.map(doc => doc.data()).filter(x=> (x as IStars).name.toLowerCase().includes(strName.toLowerCase()));
-    return starsList;
+    const starsList = starsSnapshot.docs.map(doc => data.push(doc.data().path));
+    return data;
 
-  }
-  getStarsName(strName:string){
-
-    this.dataFromDb = [];
-    this.getDataStarsFromDbByName(strName).then(x=> x.forEach(x=> this.dataFromDb.push(x.path)))
-
-    return this.dataFromDb;
-  }
-
-  getStartsAll(){
-
-    this.dataFromDb = [];
-    this.getDataStarsFromDbAll().then(x=> x.forEach(x=> this.dataFromDb.push(x.path)));
-    return this.dataFromDb;
-  }
-
-  private async getDataStarsFromDbAll() {
-    
-    const starsCol = collection(this.db, 'stars');
-    const starsSnapshot = await getDocs(starsCol);
-    const starsList = starsSnapshot.docs.map(doc => doc.data());
-    return starsList;
-
-    // let dataStars:IStars[];
-    // const starsCol = collection(this.db, 'stars');
-    // await getDocs(starsCol).then((querySnapshot) => {
-    //   querySnapshot.forEach(function (doc) {
-    //     // doc.data() is never undefined for query doc snapshots
-    //     // console.log(doc.get('name'), " => ", (doc.data() as IStars).path);
-
-    //     dataStars =doc.data() as IStars[];
-    //   });
-    // }).catch(function (error) {
-    //   console.log("Error getting documents: ", error);
-    // });
-
-    // console.log(dataStars)
-    // return dataStars
   }
 
 }

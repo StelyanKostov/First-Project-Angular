@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { WomanModule } from '../woman/woman.module';
+import { FormsModule } from '@angular/forms';
+import { FormsRoutingModule } from '../forms/forms-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,8 +15,8 @@ import { WomanModule } from '../woman/woman.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
-    WomanModule
+    RouterModule
+    
   ],
   exports:[
     NavigationComponent

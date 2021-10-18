@@ -10,9 +10,11 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { WomanModule } from './woman/woman.module';
 
 import { environment } from "src/environments/environment";
-import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { FormsRoutingModule } from './forms/forms-routing.module';
+import {FormsModule as form} from './forms/forms.module'
+import { WomanRoutingModule } from './woman/woman-routing.module';
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFireDatabaseModule } from '@angular/fire/database';
 
@@ -22,7 +24,6 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     SearchBarComponent,
     NotFoundComponent,
-    SuggestionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,9 @@ import { SharedModule } from './shared/shared.module';
     WomanModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    form,
+    
 
   ],
   providers: [

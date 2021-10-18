@@ -1,0 +1,26 @@
+<button (click)="checkImg()">Check image</button>
+
+<form [formGroup]="form" (ngSubmit)="editFormSubmit()">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" formControlName="name">
+    </div>
+    <div>
+        <label for="path">Path</label>
+        <input type="text" formControlName="path">
+    </div>
+
+    <div>
+        <label for="newName">New Name</label>
+        <input type="text" formControlName="newName">
+    </div>
+    <div>
+        <label for="newPath">New Path</label>
+        <input type="text" formControlName="newPath">
+    </div>
+    <button>Sumbit</button>
+</form>
+
+<div>
+    <img appEnlargeImg src="{{img}}" alt="">
+</div>

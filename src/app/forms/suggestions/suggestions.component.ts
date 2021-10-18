@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FirebaseService } from '../shared/firebase.service';
+import { FirebaseService } from '../../shared/firebase.service';
 
 @Component({
   selector: 'app-suggestions',

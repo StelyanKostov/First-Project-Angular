@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
      
     }
 
-  ngOnInit(): void {
+ async ngOnInit() {
     // this.route.queryParams.subscribe(params => {
     //   this.parametars = params['searchString'];
     //   console.log(params['searchString']+ " here")
@@ -37,7 +37,7 @@ export class SearchBarComponent implements OnInit {
       this.data = null
       const name = this.route.snapshot.params.name;
       // this.data =  this.womenService.getAllImgWithString(name);
-      this.data = this.fireBaseService.getStarsName(name);
+    await  this.fireBaseService.getStarsName(name).then(x=> this.data = x);
 
         console.log(name)
       // window.scroll(0,0);
@@ -54,11 +54,14 @@ export class SearchBarComponent implements OnInit {
    
   }
 
-  startSearch(value:string){
+ async startSearch(value:string){
 
+    this.data = [];
   //  this.data  = this.womenService.getAllImgWithString(value);
-   this.data = this.fireBaseService.getStarsName(value);
+   await this.fireBaseService.getStarsForSearch(value).then(x=> this.data = x)
+   
    console.log(this.data)
+
    this.isStartSearch = !this.isStartSearch;
   }
 
@@ -69,8 +72,7 @@ export class SearchBarComponent implements OnInit {
       this.data = null;
       return
      
-    }
-    
+    }   
     this.startSearch(this.inputValue)
   
     }
