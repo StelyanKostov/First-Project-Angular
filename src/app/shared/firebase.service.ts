@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, where, query } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, where, query, deleteDoc } from 'firebase/firestore/lite';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
 import { WomenService } from '.././woman/women.service';
@@ -34,6 +34,16 @@ export class FirebaseService {
 
     }
 
+  }
+  async deleteStars(stringName:string){
+
+    const starsCol = query(collection(this.db, 'stars'), where("name", "==", stringName));
+
+    const starsSnapshot = await getDocs(starsCol);
+
+    starsSnapshot.docs.map(doc => deleteDoc(doc.ref))
+    
+    // await deleteDoc(doc(this.db, "stars", starsCol));
   }
 
   async updateStar(id: string, newPath: string) {

@@ -1,0 +1,14 @@
+<div>
+    <form #f="ngForm" (ngSubmit)="submitHandler(f)">
+        <label for="name">Name</label>
+        <input type="text" name="name" ngModel>
+
+        <button [disabled]="chekForSend">Submit</button>
+    </form>
+
+    <button (click)="checkHandler(f)">Chech</button>
+</div>
+
+<div *ngIf="imgs">
+    <img appEnlargeImg *ngFor="let img of imgs" src="{{img}}" alt="">
+</div>

@@ -1,5 +1,3 @@
-import { retryWhen } from "rxjs/operators";
-
 export class WomenService {
 
  
@@ -160,11 +158,6 @@ export class WomenService {
     constructor() { }
 
     
-
-    getAllImgWithString(str:string){
-      var data = this.dataOther.filter(x=> x.toUpperCase().includes(str.toUpperCase()));
-      return data;
-    }
     getAllImg(){
     
       var data = this.dataOther;

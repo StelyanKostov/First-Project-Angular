@@ -5,13 +5,15 @@ import { FormsRoutingModule } from './forms-routing.module';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormBuilder, FormsModule as form, ReactiveFormsModule } from '@angular/forms';
+import { DeleteFormComponent } from './delete-form/delete-form.component';
 
 
 
 @NgModule({
   declarations: [
     EditFormComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    DeleteFormComponent
   ],
   imports: [
     CommonModule,

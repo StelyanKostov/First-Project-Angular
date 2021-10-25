@@ -18,11 +18,7 @@ export class TopWomanService {
   constructor() { }
 
   dataTopWoman:ITopWaman[] =[
-    // {
-    //   position: 1,
-    //   name: "Desi",
-    //   pathToImg: "../assets/desi/desi.jpg"
-    // },
+   
     {
       position: 1,
       name: "Victoria Justice",
@@ -49,7 +45,6 @@ export class TopWomanService {
       pathToImg: "https://ilarge.lisimg.com/image/16292906/759full-kiele-montgomery.jpg"
     },
     
-  
   ];
   
   getTopWoman(){

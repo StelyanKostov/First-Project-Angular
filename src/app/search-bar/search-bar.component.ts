@@ -1,45 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WomenService } from '../woman/women.service';
-import {tap, switchMap, map} from 'rxjs/operators'
+import { tap, switchMap, map } from 'rxjs/operators'
 import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css', '../../image-styles.css']
 })
 export class SearchBarComponent implements OnInit {
 
-  data:string[];
+  data: string[];
   isStartSearch = false;
-  parametars:string;
+  parametars: string;
   inputValue;
-  constructor(private womenService:WomenService,
-    private route:ActivatedRoute,
-    private r :Router,
-    private fireBaseService:FirebaseService
-    ) { 
-     
-     
-    }
+  constructor(private womenService: WomenService,
+    private route: ActivatedRoute,
+    private r: Router,
+    private fireBaseService: FirebaseService
+  ) {
 
- async ngOnInit() {
+  }
+
+  async ngOnInit() {
     // this.route.queryParams.subscribe(params => {
     //   this.parametars = params['searchString'];
     //   console.log(params['searchString']+ " here")
     // });
 
- 
-    if (!("/search"=== this.r.url)) {
 
-      window.scroll(0,0);
+    if (!("/search" === this.r.url)) {
+
+      window.scroll(0, 0);
       this.data = null
       const name = this.route.snapshot.params.name;
-      // this.data =  this.womenService.getAllImgWithString(name);
-    await  this.fireBaseService.getStarsName(name).then(x=> this.data = x);
+      console.log(name)
 
-        console.log(name)
+      // this.data =  this.womenService.getAllImgWithString(name);
+      await this.fireBaseService.getStarsName(name).then(x => this.data = x);
+      
+      console.log(this.data)
       // window.scroll(0,0);
       // this.route.params.pipe(
       //   tap(()=>this.data = null),
@@ -50,30 +51,26 @@ export class SearchBarComponent implements OnInit {
       //   // this.isStartSearch = !this.isStartSearch;
       // })
     }
-     
-   
+
+
   }
 
- async startSearch(value:string){
+  async startSearch(value: string) {
 
     this.data = [];
-  //  this.data  = this.womenService.getAllImgWithString(value);
-   await this.fireBaseService.getStarsForSearch(value).then(x=> this.data = x)
-   
-   console.log(this.data)
-
-   this.isStartSearch = !this.isStartSearch;
+    await this.fireBaseService.getStarsForSearch(value).then(x => this.data = x)
+    this.isStartSearch = !this.isStartSearch;
   }
 
-  inputKeyup(event:KeyboardEvent):void{
+  inputKeyup(event: KeyboardEvent): void {
     this.inputValue = (event.target as HTMLInputElement).value;
-   
+
     if (this.inputValue === "") {
       this.data = null;
       return
-     
-    }   
-    this.startSearch(this.inputValue)
-  
+
     }
+    this.startSearch(this.inputValue)
+
+  }
 }

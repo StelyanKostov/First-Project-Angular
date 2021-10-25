@@ -26,17 +26,3 @@ input {
     width: 25%;
     margin: 7px;
 }
-
-.toBigImg {
-    width: 32%;
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    margin: auto;
-    left: 0;
-    right: 0;
-    padding-left: 34%;
-    padding-right: 34%;
-    backdrop-filter: blur(10px);
-    /* backdrop-filter: brightness(0%); */
-}

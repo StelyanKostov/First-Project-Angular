@@ -1,0 +1,21 @@
+input {
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+label {
+    color: white;
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+img {
+    width: 19%;
+    height: 550px;
+    object-fit: cover;
+    object-position: 50% 50%;
+}

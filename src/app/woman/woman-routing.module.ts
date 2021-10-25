@@ -4,7 +4,7 @@ import { WomenComponent } from "./women/women.component";
 
 const routes: Routes = [
     {
-    path:'women',  
+    path:'woman',  
     component: WomenComponent
     },
    

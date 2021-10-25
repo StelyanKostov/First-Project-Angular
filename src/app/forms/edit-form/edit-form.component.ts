@@ -5,7 +5,7 @@ import { FirebaseService, IStars } from 'src/app/shared/firebase.service';
 @Component({
   selector: 'app-edit-form',
   templateUrl: './edit-form.component.html',
-  styleUrls: ['./edit-form.component.css']
+  styleUrls: ['./edit-form.component.css', '../../../image-styles.css']
 })
 export class EditFormComponent implements OnInit {
 
@@ -29,37 +29,21 @@ export class EditFormComponent implements OnInit {
   }
 
 
-  editFormSubmit() {
-
+  async editFormSubmit() {
 
     let name = this.form.value.name;
     let path = this.form.get("path").value
-    // this.dataImg =  this.fireBaseService.getStarsByPathAndName(name ,path)
+    await this.fireBaseService.getStarsByPathAndName(name, path).then(x => this.dataImg = x)
     let id = this.dataImg.id;
     let newPath = this.form.value.newPath;
-
-    console.log("name " + name);
-    console.log("id " + id);
-    console.log("path " + path);
-    console.log("newPath " + newPath);
-
-
-
     this.fireBaseService.updateStar(id ,newPath)
 
   }
 
-  async checkImg() {
+   checkImg() {
 
-    let name = this.form.value.name;
     let path = this.form.get("path").value
     this.img = path
-    await this.fireBaseService.getStarsByPathAndName(name, path).then(x => this.dataImg = x)
-
-    // const {id , name , path} = this.dataImg;
-
-
-    console.log(this.dataImg)
 
   }
 }

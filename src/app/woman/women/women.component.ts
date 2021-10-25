@@ -6,7 +6,7 @@ import { FirebaseService, IStars } from '../../shared/firebase.service'
 @Component({
   selector: 'app-women',
   templateUrl: './women.component.html',
-  styleUrls: ['./women.component.css']
+  styleUrls: ['./women.component.css' ,'../../../image-styles.css']
 })
 export class WomenComponent implements OnInit {
   data: string[] = [];
@@ -20,7 +20,6 @@ export class WomenComponent implements OnInit {
   ) {
     titleService.setTitle("Women")
 
-    // db.updateStar();
   }
 
 

@@ -19,10 +19,6 @@ export class TopWomanComponent implements OnInit {
     this.showImg()
   }
  
-  
-   
- 
-
   showImg() {
 
     this.dataimg = this.topWomanService.getTopWoman();
