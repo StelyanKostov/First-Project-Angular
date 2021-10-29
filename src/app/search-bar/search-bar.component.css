@@ -19,10 +19,16 @@ button:hover {
     background: black;
 }
 
-input {
-    display: block;
+.input-search {
+    display: inline-block;
     padding: 5px;
     border-radius: 5px;
     width: 25%;
     margin: 7px;
+    /* margin-right: 0; */
+}
+
+.div-checkbox {
+    display: inline-block;
+    color: white;
 }

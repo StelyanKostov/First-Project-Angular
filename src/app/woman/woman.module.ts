@@ -6,13 +6,15 @@ import { WomanRoutingModule } from './woman-routing.module';
 import { WomenService } from './women.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { VideosWomanComponent } from './videos-woman/videos-woman.component';
 
 
 
 @NgModule({
   declarations: [
     WomenComponent,
-    TopWomanComponent
+    TopWomanComponent,
+    VideosWomanComponent
   ],
   imports: [
     CommonModule,

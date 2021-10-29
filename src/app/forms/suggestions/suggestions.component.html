@@ -6,12 +6,11 @@
         <label for="link">Link</label>
         <input (keyup)="shoImg($event)" type="text" id="link" name="link" placeholder="Your link" ngModel>
 
-        <!-- <label for="country">Country</label>
-        <select id="country" name="country">
-        <option value="australia">Australia</option>
-        <option value="canada">Canada</option>
-        <option value="usa">USA</option>
-      </select> -->
+        <label for="table">Table</label>
+        <select id="table" name="table" ngModel>
+        <option value="videos">Videos</option>
+        <option value="stars">Image</option>
+      </select>
 
         <button>Send</button>
     </form>
@@ -21,3 +20,7 @@
 <div>
     <img appEnlargeImg src="{{img}}" alt="">
 </div>
+<video *ngIf="img" width="320" height="240" controls>
+    <source src="assets/videos/{{img}}.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>

@@ -15,7 +15,7 @@ export interface IStars {
 
 
 @Injectable()
-export class FirebaseService {
+export class StarsImagesFirebaseService {
 
   db: any;
   constructor(private womanService: WomenService) {
@@ -24,9 +24,9 @@ export class FirebaseService {
   }
 
 
-  async addStars(name: string, arrayData: any[]) {
+  async addStars(name: string, arrayData: any[] , table) {
 
-    const starsCol = collection(this.db, 'stars');
+    const starsCol = collection(this.db, table);
 
     for (let index = 0; index < arrayData.length; index++) {
 
@@ -46,11 +46,12 @@ export class FirebaseService {
     // await deleteDoc(doc(this.db, "stars", starsCol));
   }
 
-  async updateStar(id: string, newPath: string) {
+  async updateStar(id: string, newPath: string , newName) {
 
     const ref = doc(this.db, "stars", id);
     await updateDoc(ref, {
-      path: newPath
+      path: newPath,
+      name: newName
     });
 
 
@@ -82,10 +83,10 @@ export class FirebaseService {
 
 
  
-  public async getStarsForSearch(str: string):Promise<string[]> {
+  public async getStarsForSearch(str: string , table:string):Promise<string[]> {
 
     let data:string[] =[];
-    const starsCol = query(collection(this.db, 'stars'));
+    const starsCol = query(collection(this.db, table));
 
     const starsSnapshot = await getDocs(starsCol);
     const starsList = starsSnapshot.docs.map(doc =>{ 
@@ -99,9 +100,9 @@ export class FirebaseService {
     return data
   }
 
-  public async getDataStarsFromDbAll():Promise<string[]> {
+  public async getDataStarsFromDbAll(table:string):Promise<string[]> {
     let data: string[] = [];
-    const starsCol = collection(this.db, 'stars');
+    const starsCol = collection(this.db, table);
     const starsSnapshot = await getDocs(starsCol);
     const starsList = starsSnapshot.docs.map(doc => data.push(doc.data().path));
     return data;

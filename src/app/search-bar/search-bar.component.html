@@ -2,6 +2,26 @@
 <button (click)="startSearch(input.value)">Search</button> -->
 <!-- <div *ngIf="isStartSearch"> -->
 <h1 *ngIf="data">Count: {{data?.length}}</h1>
-<input type="text" (keyup)="inputKeyup($event)" placeholder="Name of Star">
-<img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">
+<input class="input-search" type="text" (keyup)="inputKeyup($event)" placeholder="Name of Star" [value]="value">
+<div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+    <input type="checkbox" id="images" name="images" #inputImages>
+    <label for="images">images</label>
+</div>
+<div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+    <input type="checkbox" id="vieos" name="vieos" #inputVideos>
+    <label for="vieos">Videos</label>
+</div>
+<div *ngIf="showImg">
+    <img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">
+</div>
 <!-- </div> -->
+
+<div *ngIf="dataVideos">
+    <br>
+    <div *ngIf="showVideos">
+        <h1>Videos</h1>
+        <video *ngFor="let d of dataVideos" width="320" height="240" controls>
+        <source src="{{d}}" type="video/mp4">
+      </video>
+    </div>
+</div>

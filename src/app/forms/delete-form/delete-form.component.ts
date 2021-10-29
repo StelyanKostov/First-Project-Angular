@@ -1,7 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FirebaseService } from 'src/app/shared/firebase.service';
+import { StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-delete-form',
@@ -13,7 +13,7 @@ export class DeleteFormComponent implements OnInit {
   chekForSend: boolean = true;
   imgs: string[] = [];
   constructor(
-    private fireBaseService: FirebaseService
+    private fireBaseService: StarsImagesFirebaseService
   ) { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WomenService } from '../women.service';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { FirebaseService, IStars } from '../../shared/firebase.service'
+import { StarsImagesFirebaseService, IStars } from '../../shared/firebase.service'
 
 @Component({
   selector: 'app-women',
@@ -16,7 +16,7 @@ export class WomenComponent implements OnInit {
   constructor(
     public womenService: WomenService,
     public titleService: Title,
-    private db: FirebaseService
+    private db: StarsImagesFirebaseService
   ) {
     titleService.setTitle("Women")
 
@@ -26,6 +26,11 @@ export class WomenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  async showImgErzabel() {
+
+    await this.db.getStarsName('Erzabel').then(x => this.data = x);
+
+  }
   async showImgVictoriaJ() {
 
     await this.db.getStarsName('Victoria Justice').then(x => this.data = x);

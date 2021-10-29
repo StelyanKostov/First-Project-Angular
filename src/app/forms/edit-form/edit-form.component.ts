@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FirebaseService, IStars } from 'src/app/shared/firebase.service';
+import { StarsImagesFirebaseService, IStars } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-edit-form',
@@ -14,7 +14,7 @@ export class EditFormComponent implements OnInit {
   dataImg: IStars;
   constructor(
     private formBuilder: FormBuilder,
-    private fireBaseService: FirebaseService
+    private fireBaseService: StarsImagesFirebaseService
   ) {
 
     this.form = formBuilder.group({
@@ -36,7 +36,8 @@ export class EditFormComponent implements OnInit {
     await this.fireBaseService.getStarsByPathAndName(name, path).then(x => this.dataImg = x)
     let id = this.dataImg.id;
     let newPath = this.form.value.newPath;
-    this.fireBaseService.updateStar(id ,newPath)
+    let newName = this.form.value.newName;
+    this.fireBaseService.updateStar(id ,newPath , newName)
 
   }
 

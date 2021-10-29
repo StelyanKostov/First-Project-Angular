@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnlargeImgDirective } from './enlarge-img.directive';
-import { FirebaseService } from './firebase.service';
+import { StarsImagesFirebaseService } from './firebase.service';
 
 
 
@@ -11,7 +11,7 @@ import { FirebaseService } from './firebase.service';
     
   ],
   providers:[
-    FirebaseService
+    StarsImagesFirebaseService
   ],
   imports: [
     CommonModule

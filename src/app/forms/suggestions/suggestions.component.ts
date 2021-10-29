@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../../shared/firebase.service';
+import { StarsImagesFirebaseService } from '../../shared/firebase.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -12,7 +12,7 @@ export class SuggestionsComponent implements OnInit {
 
   img:string;
   constructor(
-    private fireBaseService:FirebaseService,
+    private fireBaseService:StarsImagesFirebaseService,
     private router:Router
     ) { }
 
@@ -23,7 +23,15 @@ export class SuggestionsComponent implements OnInit {
 
     let imgName = form.value.name;
     let imgLink =form.value.link;
-    this.fireBaseService.addStars(imgName , [imgLink])
+    let table = form.value.table;
+
+    console.log(imgName + imgLink + table)
+
+    if (table === "videos") {
+      
+      imgLink = `assets/videos/${imgLink}.mp4`
+    }
+    this.fireBaseService.addStars(imgName , [imgLink], table)
     // this.router.navigate(['woman'])
   }
   shoImg(event:KeyboardEvent){
