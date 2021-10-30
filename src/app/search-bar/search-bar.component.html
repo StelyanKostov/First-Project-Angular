@@ -3,13 +3,16 @@
 <!-- <div *ngIf="isStartSearch"> -->
 <h1 *ngIf="data">Count: {{data?.length}}</h1>
 <input class="input-search" type="text" (keyup)="inputKeyup($event)" placeholder="Name of Star" [value]="value">
-<div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
-    <input type="checkbox" id="images" name="images" #inputImages>
-    <label for="images">images</label>
-</div>
-<div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
-    <input type="checkbox" id="vieos" name="vieos" #inputVideos>
-    <label for="vieos">Videos</label>
+
+<div *ngIf="data || dataVideos" class="div-checkbox">
+    <div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+        <input type="checkbox" id="images" name="images" #inputImages>
+        <label for="images">Images</label>
+    </div>
+    <div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+        <input type="checkbox" id="vieos" name="vieos" #inputVideos>
+        <label for="vieos">Videos</label>
+    </div>
 </div>
 <div *ngIf="showImg">
     <img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">

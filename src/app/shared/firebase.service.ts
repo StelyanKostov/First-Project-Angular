@@ -71,10 +71,10 @@ export class StarsImagesFirebaseService {
     return data;
 
   }
-  public async getStarsName(name: string):Promise<string[]> {
+  public async getStarsName(name: string , table:string):Promise<string[]> {
     let data: string[] = [];
 
-    const starsCol = query(collection(this.db, 'stars'), where("name", "==", name));
+    const starsCol = query(collection(this.db, table), where("name", "==", name));
     const starsSnapshot = await getDocs(starsCol);
     const starsList = starsSnapshot.docs.map(doc => data.push(doc.data().path))
     return data;

@@ -45,7 +45,7 @@ export class SearchBarComponent implements OnInit {
       console.log(name)
 
       // this.data =  this.womenService.getAllImgWithString(name);
-      await this.fireBaseService.getStarsName(name).then(x => this.data = x);
+      await this.fireBaseService.getStarsName(name , "stars").then(x => this.data = x);
 
       console.log(this.data)
       // window.scroll(0,0);

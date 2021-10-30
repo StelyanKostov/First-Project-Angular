@@ -6,13 +6,20 @@ import { StarsImagesFirebaseService, IStars } from '../../shared/firebase.servic
 @Component({
   selector: 'app-women',
   templateUrl: './women.component.html',
-  styleUrls: ['./women.component.css' ,'../../../image-styles.css']
+  styleUrls: ['./women.component.css', '../../../image-styles.css']
 })
 export class WomenComponent implements OnInit {
-  data: string[] = [];
+
+
+  data = {
+    pathImgs: [],
+    pathVideos: []
+  };
   isVictoriaJ = false;
   isKendallJ = false;
   isNinaDobrev = false;
+  showImg: boolean = true
+  showVideos: boolean = true;
   constructor(
     public womenService: WomenService,
     public titleService: Title,
@@ -22,44 +29,53 @@ export class WomenComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
   }
 
   async showImgErzabel() {
 
-    await this.db.getStarsName('Erzabel').then(x => this.data = x);
-
+    this.showImgOn('Erzabel');
   }
   async showImgVictoriaJ() {
 
-    await this.db.getStarsName('Victoria Justice').then(x => this.data = x);
+    this.showImgOn('Victoria Justice');
 
   }
   async showImgNinaDobrev() {
-    await this.db.getStarsName('Nina Dobrev').then(x => this.data = x);
+
+    this.showImgOn('Nina Dobrev');
 
   }
   async showImgKendallJ() {
-    await this.db.getStarsName('Kendall Jenner').then(x => this.data = x);
+
+    this.showImgOn('Kendall Jenner');
 
   }
   async showLeidyAImg() {
-    await this.db.getStarsName('Leidy Amelia').then(x => this.data = x);
+    this.showImgOn('Leidy Amelia');
 
   }
   async showImgEmily() {
-    await this.db.getStarsName('Emily Ratajkowski').then(x => this.data = x);
+    this.showImgOn('Emily Ratajkowski');
 
 
   }
   showAllImg() {
 
     // this.db.getStarsAll().then(x=> x.forEach(x=> this.data.push(x.path)))
-
-    this.data = null;
-    this.data = this.womenService.getAllImg()
+    this.data.pathImgs = this.womenService.getAllImg()
   }
 
+  async showImgOn(name: string) {
 
+    await this.db.getStarsName(name, 'videos').then(x => this.data.pathVideos = x);
+    await this.db.getStarsName(name, 'stars').then(x => this.data.pathImgs = x);
+  }
+
+  showChecked(elementImg, elementVideos) {
+
+    this.showImg = elementImg.checked ? true : false;
+    this.showVideos = elementVideos.checked ? true : false;
+
+  }
 }

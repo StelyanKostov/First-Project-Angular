@@ -23,7 +23,7 @@ export class DeleteFormComponent implements OnInit {
 
   async checkHandler(form: NgForm) {
 
-    await this.fireBaseService.getStarsName(form.value.name).then(x => this.imgs = x);
+    await this.fireBaseService.getStarsName(form.value.name , 'stars').then(x => this.imgs = x);
 
     this.chekForSend = false;
   }

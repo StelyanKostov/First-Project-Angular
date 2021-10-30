@@ -9,7 +9,31 @@
 
 
 </nav>
-<div>
-    <h1 *ngIf="data">Count: {{data?.length}}</h1>
-    <img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">
+<div *ngIf="data.pathImgs.length > 0 || data.pathVideos.length > 0">
+    <h3>Images</h3>
+    <div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+        <input type="checkbox" id="images" name="images" #inputImages>
+        <label for="images">Images</label>
+    </div>
+    <h3>Videos</h3>
+    <div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
+        <input type="checkbox" id="vieos" name="vieos" #inputVideos>
+        <label for="vieos">Videos</label>
+    </div>
+</div>
+<div *ngIf="showImg">
+    <div *ngIf="data?.pathImgs?.length > 0">
+        <h1>Count: {{data.pathImgs.length}}</h1>
+        <img appEnlargeImg *ngFor="let img of data.pathImgs" src="{{img}}" alt="">
+    </div>
+</div>
+<div *ngIf="showVideos">
+    <div *ngIf="data?.pathVideos?.length > 0">
+        <h1>Count: {{data.pathVideos.length}}</h1>
+        <h1>Videos</h1>
+        <video *ngFor="let d of data.pathVideos" width="320" height="240" controls>
+        <source src="{{d}}" type="video/mp4">
+      </video>
+
+    </div>
 </div>
