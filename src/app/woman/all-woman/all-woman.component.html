@@ -1,0 +1,14 @@
+<div>
+
+    <div (click)="showImgOnGirl(d.name)" *ngFor="let d of data">
+
+        <h3>{{d.name}}</h3>
+        <img src="{{d.path[0]}}" alt="">
+    </div>
+</div>
+
+<div *ngIf="imgGirl">
+
+    <img *ngFor="let  d of data[0].path" src="{{d}}" alt="">
+
+</div>

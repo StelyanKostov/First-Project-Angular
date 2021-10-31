@@ -108,5 +108,14 @@ export class StarsImagesFirebaseService {
     return data;
 
   }
+  public async getDataAll(table:string):Promise<IStars[]> {
+    let data: IStars[] = [];
+    
+    const starsCol = collection(this.db, table);
+    const starsSnapshot = await getDocs(starsCol);
+    const starsList = starsSnapshot.docs.map(doc => data.push(doc.data() as IStars));
+    return data;
+
+  }
 
 }

@@ -32,6 +32,11 @@ export class WomenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  async showImgAnyaSugar() {
+
+    this.showImgOn('Anya Sugar');
+  }
+
   async showImgErzabel() {
 
     this.showImgOn('Erzabel');

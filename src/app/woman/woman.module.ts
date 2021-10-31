@@ -7,6 +7,7 @@ import { WomenService } from './women.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { VideosWomanComponent } from './videos-woman/videos-woman.component';
+import { AllWomanComponent } from './all-woman/all-woman.component';
 
 
 
@@ -14,7 +15,8 @@ import { VideosWomanComponent } from './videos-woman/videos-woman.component';
   declarations: [
     WomenComponent,
     TopWomanComponent,
-    VideosWomanComponent
+    VideosWomanComponent,
+    AllWomanComponent
   ],
   imports: [
     CommonModule,
