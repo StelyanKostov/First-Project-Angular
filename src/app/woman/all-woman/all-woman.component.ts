@@ -1,34 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { IStars, StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 
+
+interface IData {
+  name: string,
+  path: string[]
+
+}
+
+
 @Component({
   selector: 'app-all-woman',
   templateUrl: './all-woman.component.html',
-  styleUrls: ['./all-woman.component.css']
+  styleUrls: ['./all-woman.component.css' , '../../../image-styles.css']
 })
-export class AllWomanComponent implements OnInit {
+export class AllWomanComponent implements OnInit  {
 
   imgGirl = false;
-  data = [
-    {
-      name: "",
-      path: []
+  // data = [
+  //   {
+  //     name: "",
+  //     path: []
 
+  //   }
+  // ]
+  data: IData[] =[
+    {
+      name: " ",
+      path: [" "]
     }
   ]
   data2: IStars[];
   constructor(private db: StarsImagesFirebaseService) {
     this.getData();
-   }
+  }
 
+  
   ngOnInit(): void {
 
-    
+
   }
 
   async getData() {
 
     await this.db.getDataAll('stars').then(x => this.data2 = x)
+
+    
 
     for (let index = 0; index < this.data2.length; index++) {
 
@@ -44,13 +61,20 @@ export class AllWomanComponent implements OnInit {
         }
       }
     }
+    console.log( this.data.reverse())
+    this.data.splice(this.data.length - 1,1)
 
-    console.log(this.data)
   }
 
-  showImgOnGirl(name:string){
-   this.data = this.data.filter(x=> x.name === name)
-   this.imgGirl = true;
+  showImgOnGirl(name: string) {
+    this.data = this.data.filter(x => x.name === name)
+    this.imgGirl = true;
+    window.scroll(0,0)
+  }
+
+  backHandler(){
+    this.getData();
+    this.imgGirl =false;
   }
 
 }

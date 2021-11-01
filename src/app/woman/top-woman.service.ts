@@ -41,8 +41,8 @@ export class TopWomanService {
     },
     {
       position: 5,
-      name: "kiele",
-      pathToImg: "https://ilarge.lisimg.com/image/16292906/759full-kiele-montgomery.jpg"
+      name: "Anya Sugar",
+      pathToImg: "http://localhost:4200/assets/anya sugar/anya sugar12.jpg"
     },
     
   ];

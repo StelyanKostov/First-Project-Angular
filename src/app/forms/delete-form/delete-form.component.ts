@@ -6,7 +6,7 @@ import { StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 @Component({
   selector: 'app-delete-form',
   templateUrl: './delete-form.component.html',
-  styleUrls: ['./delete-form.component.css','../../../image-styles.css']
+  styleUrls: ['./delete-form.component.css', '../../../image-styles.css']
 })
 export class DeleteFormComponent implements OnInit {
 
@@ -23,11 +23,13 @@ export class DeleteFormComponent implements OnInit {
 
   async checkHandler(form: NgForm) {
 
-    await this.fireBaseService.getStarsName(form.value.name , 'stars').then(x => this.imgs = x);
+    await this.fireBaseService.getStarsName(form.value.name, 'stars').then(x => this.imgs = x);
+
+    
 
     this.chekForSend = false;
   }
-  submitHandler(form: NgForm) {
-
+ async submitHandler(form: NgForm) {
+    await this.fireBaseService.deleteStars(form.value.name)
   }
 }
