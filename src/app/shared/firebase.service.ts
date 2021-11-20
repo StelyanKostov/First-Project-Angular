@@ -4,6 +4,7 @@ import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, where, query
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment'
 import { WomenService } from '.././woman/women.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -18,7 +19,7 @@ export interface IStars {
 export class StarsImagesFirebaseService {
 
   db: any;
-  constructor(private womanService: WomenService) {
+  constructor(private womanService: WomenService , private http:HttpClient) {
     const app = initializeApp(environment.fireBase);
     this.db = getFirestore(app);
   }
@@ -26,13 +27,21 @@ export class StarsImagesFirebaseService {
 
   async addStars(name: string, arrayData: any[] , table) {
 
-    const starsCol = collection(this.db, table);
+    //ADD WITH FIREBASE
+    // const starsCol = collection(this.db, table);
 
-    for (let index = 0; index < arrayData.length; index++) {
+    // for (let index = 0; index < arrayData.length; index++) {
 
-      await addDoc(starsCol, { name: name, path: arrayData[index] })
+    //   await addDoc(starsCol, { name: name, path: arrayData[index] })
 
-    }
+    // }
+
+
+    //ADD TO MongoDB
+
+
+    
+
 
   }
   async deleteStars(stringName:string){

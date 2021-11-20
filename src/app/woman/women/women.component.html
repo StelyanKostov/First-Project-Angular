@@ -11,7 +11,8 @@
 
 
 </nav>
-<div *ngIf="data.pathImgs.length > 0 || data.pathVideos.length > 0">
+<!-- <div *ngIf="data.pathImgs.length > 0 || data.pathVideos.length > 0"> -->
+<div>
     <h3>Images</h3>
     <div class="div-checkbox" (click)="showChecked(inputImages , inputVideos)">
         <input type="checkbox" id="images" name="images" #inputImages>
@@ -26,7 +27,7 @@
 <div *ngIf="showImg">
     <div *ngIf="data?.pathImgs?.length > 0">
         <h1>Count: {{data.pathImgs.length}}</h1>
-        <img appEnlargeImg *ngFor="let img of data.pathImgs" src="{{img}}" alt="">
+        <img appEnlargeImg *ngFor="let img of data.pathImgs" src="{{img.path || img}}" alt="">
     </div>
 </div>
 <div *ngIf="showVideos">

@@ -3,7 +3,7 @@
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your name.." ngModel>
 
-        <label for="link">Link</label>
+        <label for="link">Link ... if is for table Videos just write name of file in video folder.</label>
         <input (keyup)="shoImg($event)" type="text" id="link" name="link" placeholder="Your link" ngModel>
 
         <label for="table">Table</label>
@@ -24,3 +24,12 @@
     <source src="assets/videos/{{img}}.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+<!-- 
+<label class="image-upload-container btn btn-bwm">
+    <span>Select Image</span>
+    <input #imageInput
+           type="file"
+           accept="image/*"
+           (change)="processFile(imageInput)">
+  </label> -->

@@ -15,11 +15,11 @@
     </div>
 </div>
 <div *ngIf="showImg">
-    <img appEnlargeImg *ngFor="let img of data" src="{{img}}" alt="">
+    <img appEnlargeImg *ngFor="let img of data" src="{{img.path}}" alt="">
 </div>
 <!-- </div> -->
 
-<div *ngIf="dataVideos">
+<div *ngIf="dataVideos?.length > 0">
     <br>
     <div *ngIf="showVideos">
         <h1>Videos</h1>

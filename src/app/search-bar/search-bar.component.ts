@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WomenService } from '../woman/women.service';
 import { tap, switchMap, map } from 'rxjs/operators'
-import { StarsImagesFirebaseService } from '../shared/firebase.service';
+import { IStars, StarsImagesFirebaseService } from '../shared/firebase.service';
+import { DbService } from '../shared/db.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,7 +13,7 @@ import { StarsImagesFirebaseService } from '../shared/firebase.service';
 export class SearchBarComponent implements OnInit {
 
   value: string = "";
-  data: string[];
+  data: IStars[];
   dataVideos: string[];
   isStartSearch = false;
   parametars: string;
@@ -24,7 +25,8 @@ export class SearchBarComponent implements OnInit {
   constructor(private womenService: WomenService,
     private route: ActivatedRoute,
     private r: Router,
-    private fireBaseService: StarsImagesFirebaseService
+    private fireBaseService: StarsImagesFirebaseService,
+    private db:DbService
   ) {
 
   }
@@ -45,7 +47,9 @@ export class SearchBarComponent implements OnInit {
       console.log(name)
 
       // this.data =  this.womenService.getAllImgWithString(name);
-      await this.fireBaseService.getStarsName(name , "stars").then(x => this.data = x);
+      // await this.fireBaseService.getStarsName(name , "stars").then(x => this.data = x);
+
+      this.db.getImagesByName(name).pipe(tap(data=> this.data = data as IStars[])).subscribe()
 
       console.log(this.data)
       // window.scroll(0,0);
@@ -65,7 +69,7 @@ export class SearchBarComponent implements OnInit {
   async startSearch(value: string) {
 
     this.data = [];
-    await this.fireBaseService.getStarsForSearch(value, "stars").then(x => this.data = x)
+    // await this.fireBaseService.getStarsForSearch(value, "stars").then(x => this.data = x)
 
     await this.fireBaseService.getStarsForSearch(value, "videos").then(x => this.dataVideos = x)
     this.isStartSearch = !this.isStartSearch;

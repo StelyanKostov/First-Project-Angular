@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WomenService } from '../women.service';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { StarsImagesFirebaseService, IStars } from '../../shared/firebase.service'
+import { DbService } from 'src/app/shared/db.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-women',
@@ -23,7 +25,8 @@ export class WomenComponent implements OnInit {
   constructor(
     public womenService: WomenService,
     public titleService: Title,
-    private db: StarsImagesFirebaseService
+    private db: StarsImagesFirebaseService,
+    private dbService: DbService
   ) {
     titleService.setTitle("Women")
 
@@ -71,10 +74,16 @@ export class WomenComponent implements OnInit {
     this.data.pathImgs = this.womenService.getAllImg()
   }
 
-  async showImgOn(name: string) {
+  showImgOn(name: string) {
 
-    await this.db.getStarsName(name, 'videos').then(x => this.data.pathVideos = x);
-    await this.db.getStarsName(name, 'stars').then(x => this.data.pathImgs = x);
+    this.data.pathImgs =[];
+    // this.dbService.getImagesByName(name).subscribe(data => this.data.pathImgs = data as []);
+
+    this.dbService.getImagesByName(name).pipe( tap((data) =>this.data.pathImgs = data as [] )).subscribe()
+
+
+    // await this.db.getStarsName(name, 'videos').then(x => this.data.pathVideos = x);
+    // await this.db.getStarsName(name, 'stars').then(x => this.data.pathImgs = x);
   }
 
   showChecked(elementImg, elementVideos) {

@@ -52,18 +52,7 @@ export class WomenService {
     "../assets/img/nicole scherzinger.jpg",
     "../assets/img/Salma Hayek3.jpg",
     "../assets/img/Salma Hayek4.jpg",
-    "http://www.thewordofmatus.com/wp-content/uploads/2011/11/first-look-maggie-q.jpg",
-    "https://i.dailymail.co.uk/i/pix/2014/10/03/1412363650634_wps_3_Maggie_Q_leaves_this_even.jpg",
-    "https://www1.pictures.stylebistro.com/bg/Maggie+Q+Pants+Shorts+Capri+Pants+mNcbp3Z44qyx.jpg",
-    "https://www.gotceleb.com/wp-content/uploads/celebrities/maggie-q/leaving-the-bowery-hotel-in-nyc/Maggie-Q-in-Tight-Pants--01.jpg",
-    "https://ca-times.brightspotcdn.com/dims4/default/520de31/2147483647/strip/true/crop/333x500+0+0/resize/840x1261!/quality/90/?url=https%3A%2F%2Fwww.trbimg.com%2Fimg-50300a53%2Fturbine%2Fsns-tv-cw-maggie-q-nikita-style-001",
-    "https://4.bp.blogspot.com/-j4vBI0RgRZ4/Ww0R7pU-T0I/AAAAAAAAJ90/NIZ5hAqYpyAvwlYHyMV9VCSDB0E-K1DpwCEwYBhgL/s1600/3607-maggie-.jpg",
-    "https://i1.wp.com/indiancelebblog.com/wp-content/uploads/2021/07/Maggie-q-hollywood-movie-celeb-cm1-31-hot-lingerie-hd-screenshots.jpg?ssl=1",
-    "https://cdn.justjared.com/wp-content/uploads/2009/10/maggieq-love/maggie-q-new-york-i-love-you-premiere-04.jpg",
-    "https://www.usmagazine.com/wp-content/uploads/1395232266_maggie-q-zoom.jpg?quality=86&strip=all",
-    "http://img.paparaco.me/2015/11/Maggie-Q-Completelly-Nude-just-with-Pearls-Around-Her-Bare-Neck.jpg",
-    "https://i.pinimg.com/474x/1b/c6/32/1bc6329b36094078d2e65b95d57a8200--shane-west-maggie-q.jpg",
-    "http://www.snakkle.com/wp-content/uploads/2011/09/maggie-q-GC.jpg",
+    
     "https://cdn2.shopify.com/s/files/1/0929/1494/files/rsz_tianaparker2_1024x1024.jpg?v=1563210327",
     "https://iv1.lisimg.com/image/21875304/640full-morgan-avery.jpg",
     "https://www.babepedia.com/user-uploads/Morgan%20Avery11.jpg",
@@ -147,12 +136,7 @@ export class WomenService {
     "https://fapreon.com/content/j/a/jasmine-tookes/e510f/0015.jpg",
     "https://static-ca-cdn.eporner.com/gallery/hu/6Y/NifnI3R6Yhu/411382-jasmine-tookes-nude.jpg",
     "http://thefappeningnew.com/wp-content/uploads/2017/05/Jasmine-Tookes_thefappeningnew_com-69.jpg",
-    "https://saucemonsters.com/wp-content/uploads/2017/06/Cara-Delevingne-03.jpg",
-    "https://i2.wp.com/bestofcomicbooks.com/wp-content/uploads/2018/06/cara-delevingne-cleavage.jpg",
-    "https://saucemonsters.com/wp-content/uploads/2017/06/Cara-Delevingne-02.jpg",
-    "https://www3.pictures.stylebistro.com/gi/Cara+Delevingne+Dresses+Skirts+Mini+Dress+nUNzPezWZBtl.jpg",
-    "https://akns-images.eonline.com/eol_images/Entire_Site/201507/rs_634x862-150107102042-634-dkny-cara-delevingne.ls.1715.jpg",
-    "https://media1.popsugar-assets.com/files/thumbor/23CtyliMFoG3amUhXuIPDkeXVHw/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/09/04/786/n/1922398/ce4ffe65cf8f0e0b_GettyImages-1165912586/i/Sexy-Cara-Delevingne-Pictures.jpg",
+   
   ];
   
     constructor() { }
