@@ -69,9 +69,7 @@ export class SearchBarComponent implements OnInit {
   async startSearch(value: string) {
 
     this.data = [];
-    // await this.fireBaseService.getStarsForSearch(value, "stars").then(x => this.data = x)
-
-    await this.fireBaseService.getStarsForSearch(value, "videos").then(x => this.dataVideos = x)
+    this.db.getImagesByString(value).pipe(tap(data=> this.data = data as IStars[])).subscribe();
     this.isStartSearch = !this.isStartSearch;
   }
 
@@ -89,17 +87,14 @@ export class SearchBarComponent implements OnInit {
   showOnlyImages(value) {
 
     this.showImg = !this.showImg;
-  
   }
 
   showChecked(elementImg , elementVideos){
 
     this.showImg = elementImg.checked ? true: false;
     this.showVideos = elementVideos.checked ? true: false;
-
   }
   showOnlyVideos() {
-
     this.showVideos = !this.showVideos;
   }
 }

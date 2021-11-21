@@ -1,5 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DbService } from 'src/app/shared/db.service';
 import { StarsImagesFirebaseService, IStars } from 'src/app/shared/firebase.service';
 
 @Component({
@@ -14,7 +16,8 @@ export class EditFormComponent implements OnInit {
   dataImg: IStars;
   constructor(
     private formBuilder: FormBuilder,
-    private fireBaseService: StarsImagesFirebaseService
+    private fireBaseService: StarsImagesFirebaseService,
+    private db:DbService
   ) {
 
     this.form = formBuilder.group({
@@ -33,12 +36,16 @@ export class EditFormComponent implements OnInit {
 
     let name = this.form.value.name;
     let path = this.form.get("path").value
-    await this.fireBaseService.getStarsByPathAndName(name, path).then(x => this.dataImg = x)
-    let id = this.dataImg.id;
+    // await this.fireBaseService.getStarsByPathAndName(name, path).then(x => this.dataImg = x)
+    let id = ""
+
+
+   await this.db.getImageByPathAndName(name,path).toPromise().then(data => id = (data as IStars).id) 
     let newPath = this.form.value.newPath;
     let newName = this.form.value.newName;
-    this.fireBaseService.updateStar(id ,newPath , newName)
+    // this.fireBaseService.updateStar(id ,newPath , newName)
 
+    this.db.updateStar(id,newName ,newPath).subscribe()
   }
 
    checkImg() {

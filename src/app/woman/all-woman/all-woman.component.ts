@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/shared/db.service';
 import { IStars, StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 
 
@@ -26,7 +27,7 @@ export class AllWomanComponent implements OnInit {
   data: IData[] = [];
 
   data2: IStars[];
-  constructor(private db: StarsImagesFirebaseService) {
+  constructor(private db: DbService) {
     this.getData();
   }
 
@@ -38,7 +39,11 @@ export class AllWomanComponent implements OnInit {
 
   async getData() {
 
-    await this.db.getDataAll('stars').then(x => this.data2 = x)
+    this.data = [];
+
+    // await this.db.getDataAll('stars').then(x => this.data2 = x)
+
+   await this.db.getAllImages().toPromise().then(data => this.data2 = data as IStars[])
 
     this.data.push({ name: this.data2[0].name, path: [this.data2[0].path] })
 
