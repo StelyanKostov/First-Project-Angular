@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
+import { tap } from 'rxjs/operators';
+import { DbVideosService } from 'src/app/shared/db-videos.service';
+import { IStars, StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-videos-woman',
@@ -9,11 +11,12 @@ import { StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 export class VideosWomanComponent implements OnInit {
 
   data = [];
-  constructor(private db: StarsImagesFirebaseService) { }
+  constructor(private db: DbVideosService) { }
 
-  async ngOnInit() {
-
-    await this.db.getDataStarsFromDbAll("videos").then(x => x.map(x => this.data.push(x)));
+  ngOnInit() {
+    this.db.getAllVideos().pipe(tap(data => this.data = (data as IStars[]).map(x => x.path))).subscribe()
   }
+
+
 
 }

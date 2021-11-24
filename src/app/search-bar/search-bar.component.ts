@@ -4,6 +4,7 @@ import { WomenService } from '../woman/women.service';
 import { tap, switchMap, map } from 'rxjs/operators'
 import { IStars, StarsImagesFirebaseService } from '../shared/firebase.service';
 import { DbService } from '../shared/db.service';
+import { DbVideosService } from '../shared/db-videos.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -14,7 +15,7 @@ export class SearchBarComponent implements OnInit {
 
   value: string = "";
   data: IStars[];
-  dataVideos: string[];
+  dataVideos: IStars[];
   isStartSearch = false;
   parametars: string;
   inputValue;
@@ -26,7 +27,8 @@ export class SearchBarComponent implements OnInit {
     private route: ActivatedRoute,
     private r: Router,
     private fireBaseService: StarsImagesFirebaseService,
-    private db:DbService
+    private db: DbService,
+    private dbVideosService: DbVideosService
   ) {
 
   }
@@ -49,7 +51,9 @@ export class SearchBarComponent implements OnInit {
       // this.data =  this.womenService.getAllImgWithString(name);
       // await this.fireBaseService.getStarsName(name , "stars").then(x => this.data = x);
 
-      this.db.getImagesByName(name).pipe(tap(data=> this.data = data as IStars[])).subscribe()
+      this.db.getImagesByName(name).pipe(tap(data => this.data = data as IStars[])).subscribe()
+      this.dbVideosService.getVideosByName(name).pipe(tap(data => { this.dataVideos = data as IStars[]; })).subscribe()
+
 
       console.log(this.data)
       // window.scroll(0,0);
@@ -69,7 +73,8 @@ export class SearchBarComponent implements OnInit {
   async startSearch(value: string) {
 
     this.data = [];
-    this.db.getImagesByString(value).pipe(tap(data=> this.data = data as IStars[])).subscribe();
+    this.db.getImagesByString(value).pipe(tap(data => this.data = data as IStars[])).subscribe();
+    this.dbVideosService.searchByString(value).pipe(tap(data => { this.dataVideos = data as IStars[]; console.log(data) })).subscribe()
     this.isStartSearch = !this.isStartSearch;
   }
 
@@ -89,10 +94,10 @@ export class SearchBarComponent implements OnInit {
     this.showImg = !this.showImg;
   }
 
-  showChecked(elementImg , elementVideos){
+  showChecked(elementImg, elementVideos) {
 
-    this.showImg = elementImg.checked ? true: false;
-    this.showVideos = elementVideos.checked ? true: false;
+    this.showImg = elementImg.checked ? true : false;
+    this.showVideos = elementVideos.checked ? true : false;
   }
   showOnlyVideos() {
     this.showVideos = !this.showVideos;

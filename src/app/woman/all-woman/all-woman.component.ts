@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { DbVideosService } from 'src/app/shared/db-videos.service';
 import { DbService } from 'src/app/shared/db.service';
 import { IStars, StarsImagesFirebaseService } from 'src/app/shared/firebase.service';
 
@@ -17,17 +19,15 @@ interface IData {
 export class AllWomanComponent implements OnInit {
 
   imgGirl = false;
-  // data = [
-  //   {
-  //     name: "",
-  //     path: []
-
-  //   }
-  // ]
+  
   data: IData[] = [];
 
   data2: IStars[];
-  constructor(private db: DbService) {
+  dataVideos: IStars[];
+  constructor(
+    private db: DbService,
+    private dbVideosService:DbVideosService
+    ) {
     this.getData();
   }
 
@@ -67,6 +67,9 @@ export class AllWomanComponent implements OnInit {
 
   showImgOnGirl(name: string) {
     this.data = this.data.filter(x => x.name === name)
+
+    this.dbVideosService.getVideosByName(name).pipe(tap((data=> this.dataVideos = data as IStars[]))).subscribe()
+
     this.imgGirl = true;
     window.scroll(0, 0)
   }

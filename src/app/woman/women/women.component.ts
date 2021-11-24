@@ -4,6 +4,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { StarsImagesFirebaseService, IStars } from '../../shared/firebase.service'
 import { DbService } from 'src/app/shared/db.service';
 import { tap } from 'rxjs/operators';
+import { DbVideosService } from 'src/app/shared/db-videos.service';
 
 @Component({
   selector: 'app-women',
@@ -26,7 +27,8 @@ export class WomenComponent implements OnInit {
     public womenService: WomenService,
     public titleService: Title,
     private db: StarsImagesFirebaseService,
-    private dbService: DbService
+    private dbService: DbService,
+    private dbVideosService:DbVideosService
   ) {
     titleService.setTitle("Women")
 
@@ -80,6 +82,9 @@ export class WomenComponent implements OnInit {
     // this.dbService.getImagesByName(name).subscribe(data => this.data.pathImgs = data as []);
 
     this.dbService.getImagesByName(name).pipe( tap((data) =>this.data.pathImgs = data as [] )).subscribe()
+
+    this.dbVideosService.getVideosByName(name).pipe(tap(data=> this.data.pathVideos = (data as IStars[]).map(x=> x.path))).subscribe();
+    
 
 
     // await this.db.getStarsName(name, 'videos').then(x => this.data.pathVideos = x);

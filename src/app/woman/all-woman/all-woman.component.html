@@ -10,8 +10,15 @@
 <button *ngIf="imgGirl" (click)="backHandler()">Back</button>
 
 <div *ngIf="imgGirl">
-
-
+    <h3>Images ount: {{data[0].path.length}}</h3>
     <img appEnlargeImg *ngFor="let  d of data[0].path" src="{{d}}" alt="">
 
+</div>
+<div *ngIf="dataVideos?.length > 0">
+
+    <h3>Videos count: {{dataVideos?.length}}</h3>
+    <video controls width="250" *ngFor="let data of dataVideos">
+        <source src={{data.path}}
+                type="video/mp4">
+    </video>
 </div>

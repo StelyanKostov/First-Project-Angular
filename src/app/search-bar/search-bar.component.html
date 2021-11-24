@@ -24,7 +24,7 @@
     <div *ngIf="showVideos">
         <h1>Videos</h1>
         <video *ngFor="let d of dataVideos" width="320" height="240" controls>
-        <source src="{{d}}" type="video/mp4">
+        <source src="{{d.path}}" type="video/mp4">
       </video>
     </div>
 </div>

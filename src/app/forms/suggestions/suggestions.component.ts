@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DbVideosService } from 'src/app/shared/db-videos.service';
 import { DbService } from 'src/app/shared/db.service';
 import { StarsImagesFirebaseService } from '../../shared/firebase.service';
 import { ImageService } from '../image.service';
 
 class ImageSnippet {
-  constructor(public src: string, public file: File) {}
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -22,7 +23,8 @@ export class SuggestionsComponent implements OnInit {
     private fireBaseService: StarsImagesFirebaseService,
     private router: Router,
     private imageService: ImageService,
-    private dbService: DbService
+    private dbService: DbService,
+    private dbvideosService: DbVideosService
   ) { }
 
   ngOnInit(): void {
@@ -39,10 +41,14 @@ export class SuggestionsComponent implements OnInit {
     if (table === "videos") {
 
       imgLink = `assets/videos/${imgLink}.mp4`
+      this.dbvideosService.addVideo(imgName, imgLink)
+      
+    } else if (table === "stars") {
+
+      this.dbService.addImages(imgName, imgLink)
     }
-    
-    this.dbService.addImages(imgName , imgLink)
-    // this.fireBaseService.addStars(imgName, [imgLink], table)
+
+
     // this.router.navigate(['woman'])
   }
   shoImg(event: KeyboardEvent) {
