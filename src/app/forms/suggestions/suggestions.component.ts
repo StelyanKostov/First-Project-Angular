@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,7 +25,8 @@ export class SuggestionsComponent implements OnInit {
     private router: Router,
     private imageService: ImageService,
     private dbService: DbService,
-    private dbvideosService: DbVideosService
+    private dbvideosService: DbVideosService,
+    private htttp: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class SuggestionsComponent implements OnInit {
 
       imgLink = `assets/videos/${imgLink}.mp4`
       this.dbvideosService.addVideo(imgName, imgLink)
-      
+
     } else if (table === "stars") {
 
       this.dbService.addImages(imgName, imgLink)
@@ -56,19 +58,24 @@ export class SuggestionsComponent implements OnInit {
     this.img = (event.target as HTMLInputElement).value;
   }
 
-  // processFile(imageInput: any) {
-  //   const file: File = imageInput.files[0];
-  //   const reader = new FileReader();
+  image;
+  saveImage(files: FileList ,form:NgForm) {
 
-  //   // reader.addEventListener('load', (event: any) => {
+    var file: File = files.item(0);
 
-  //   //   this.selectedFile = new ImageSnippet(event.target.result, file);
+    var myReader: FileReader = new FileReader();
 
-  //   //   this.imageService.uploadImage(this.selectedFile.file)
-  //   // });
+    myReader.onloadend = (e) => {
 
-  //   // reader.readAsDataURL(file);
+      this.image = myReader.result;
 
-  //   this.imageService.uploadImage(file)
-  // }
+      this.htttp.post(`http://localhost:1000/api/images/upload`, {file:this.image,  name:form.value.name}, { withCredentials: true }).subscribe();
+      console.log(this.image)
+    }
+    myReader.readAsDataURL(file);
+
+  }
+
 }
+
+
