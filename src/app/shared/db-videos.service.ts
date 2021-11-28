@@ -9,9 +9,9 @@ export class DbVideosService {
   constructor(private http: HttpClient) { }
 
 
-  addVideo(name: string, path: string) {
+  addVideo(name: string, video) {
 
-    this.http.post(`http://localhost:1000/api/videos/add`, { name: name, path: path }, { withCredentials: true }).subscribe()
+    this.http.post(`http://localhost:1000/api/videos/add`, { name: name, video: video }, { withCredentials: true }).subscribe()
   }
 
   getAllVideos() {

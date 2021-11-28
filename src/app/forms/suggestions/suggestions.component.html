@@ -3,28 +3,26 @@
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your name.." #name ngModel>
 
-        <label for="link">Link ... if is for table Videos just write name of file in video folder.</label>
-        <input (keyup)="shoImg($event)" type="text" id="link" name="link" placeholder="Your link" ngModel>
+        <!-- <label for="link">Link ... if is for table Videos just write name of file in video folder.</label>
+        <input (keyup)="shoImg($event)" type="text" id="link" name="link" placeholder="Your link" ngModel> -->
 
         <label for="table">Table</label>
         <select id="table" name="table" ngModel>
         <option value="videos">Videos</option>
-        <option value="stars">Image</option>
+        <option value="stars">Image</option>  
       </select>
+        <label for="file">chose file</label>
+        <input type="file" #formControlName id="file" (change)="saveImage(formControlName.files)">
 
         <button>Send</button>
     </form>
 
 </div>
 
-<div>
+<!-- <div>
     <img appEnlargeImg src="{{img}}" alt="">
 </div>
 <video *ngIf="img" width="320" height="240" controls>
     <source src="assets/videos/{{img}}.mp4" type="video/mp4">
     Your browser does not support the video tag.
-  </video>
-
-
-<label for="file">chose file</label> -->
-<input type="file" #formControlName id="file" (change)="saveImage(formControlName.files , f)">
+  </video> -->

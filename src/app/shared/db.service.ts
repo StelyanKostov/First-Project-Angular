@@ -9,9 +9,9 @@ export class DbService {
   constructor(private http: HttpClient) { }
 
 
-  addImages(name, path) {
+  addImages(name, image) {
 
-    this.http.post('http://localhost:1000/api/images/post', { name: name, path }, { withCredentials: true }).subscribe(x => console.log(x));
+    this.http.post('http://localhost:1000/api/images/post', { name: name, image:image }, { withCredentials: true }).subscribe(x => console.log(x));
 
   }
 

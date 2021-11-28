@@ -18,6 +18,7 @@ class ImageSnippet {
 })
 export class SuggestionsComponent implements OnInit {
 
+  image;
   selectedFile: ImageSnippet;
   img: string;
   constructor(
@@ -43,11 +44,12 @@ export class SuggestionsComponent implements OnInit {
     if (table === "videos") {
 
       imgLink = `assets/videos/${imgLink}.mp4`
-      this.dbvideosService.addVideo(imgName, imgLink)
+      this.dbvideosService.addVideo(imgName, this.image)
 
     } else if (table === "stars") {
 
-      this.dbService.addImages(imgName, imgLink)
+      this.dbService.addImages(imgName, this.image)
+      console.log(this.image)
     }
 
 
@@ -58,8 +60,7 @@ export class SuggestionsComponent implements OnInit {
     this.img = (event.target as HTMLInputElement).value;
   }
 
-  image;
-  saveImage(files: FileList ,form:NgForm) {
+  saveImage(files: FileList) {
 
     var file: File = files.item(0);
 
@@ -69,8 +70,8 @@ export class SuggestionsComponent implements OnInit {
 
       this.image = myReader.result;
 
-      this.htttp.post(`http://localhost:1000/api/images/upload`, {file:this.image,  name:form.value.name}, { withCredentials: true }).subscribe();
-      console.log(this.image)
+      // this.htttp.post(`http://localhost:1000/api/images/upload`, {file:this.image,  name:form.value.name}, { withCredentials: true }).subscribe();
+      // console.log(this.image)
     }
     myReader.readAsDataURL(file);
 
